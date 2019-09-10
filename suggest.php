@@ -1,6 +1,10 @@
 <?php 
 function YaaniSuggest($q,$max = 100,$lang="tr-TR")
 {
+	$q = empty($q) ? "???":$q;
+	$q = explode(" ", $q);
+	$q = implode("+", $q);
+
 	$ch = curl_init("https://asgs.yaani.com.tr/suggest?q=$q&lang=$lang&max=$max");
 	curl_setopt_array($ch, [
 		CURLOPT_RETURNTRANSFER => True,
